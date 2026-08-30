@@ -2,24 +2,23 @@ import type { Metadata } from "next";
 import ToolShell from "@/components/ToolShell";
 import TextDiffChecker from "@/components/tools/TextDiffChecker";
 import { getTool } from "@/lib/tools";
-
 const tool = getTool("text-diff-checker")!;
-
 export const metadata: Metadata = { title: tool.name, description: tool.shortDesc };
-
 export default function Page() {
   return (
     <ToolShell
       tool={tool}
       howTo={[
-        "Paste your original text on the left and the changed version on the right.",
-        "Click \"Compare\".",
-        "Removed lines show in red, added lines in green.",
+        "Paste the first block of text into the first input box.",
+        "Paste the second block of text into the second input box.",
+        "Click Compare to analyze both texts.",
+        "Review the highlighted differences between the two versions.",
+        "Copy or update your text based on the comparison.",
       ]}
       faqs={[
-        { q: "Does this compare word by word or line by line?", a: "Line by line — it's built for comparing paragraphs, config files, or code blocks rather than catching single-character edits." },
-        { q: "Why does a line show as both removed and added?", a: "That happens when a line was edited — the old version is marked removed and the new version marked added, since they're no longer identical." },
-        { q: "Can I use this for code?", a: "Yes, though for large codebases a dedicated diff tool in your editor or version control will give more context." },
+        { q: "What does the Text Diff Checker compare?", a: "It compares two blocks of text and highlights differences, including added, removed, or changed content." },
+        { q: "Can I compare long blocks of text?", a: "Yes, you can compare articles, documents, code, or other text to identify differences quickly." },
+        { q: "Is the Text Diff Checker free to use?", a: "Yes, you can compare text online for free without downloading additional software. You can also buy premium access to unlock extra features." },
       ]}
     >
       <TextDiffChecker />
