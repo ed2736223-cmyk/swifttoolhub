@@ -15,22 +15,26 @@ export default function Page() {
     <ToolShell
       tool={tool}
       howTo={[
-        "Choose a category: Length, Weight, or Temperature.",
-        "Enter a value and pick the units to convert from and to.",
-        "The result updates instantly — use the swap icon to flip direction.",
+        
+        "Choose length, weight, or temperature.",
+        "Type the number you want to convert.",
+        "Select the unit you’re converting from and the unit you want to convert to.",
+        "Your converted value will be displayed instantly.",
+        "Use the converted value wherever you need it.",
+
       ]}
       faqs={[
         {
-          q: "How accurate are the conversions?",
-          a: "Standard conversion factors are used throughout, accurate to four decimal places for length and weight.",
+          q: "What units can I convert?",
+          a: "You can convert common units for length, weight, and temperature, including meters, feet, kilograms, pounds, Celsius, and Fahrenheit.",
         },
         {
-          q: "Why is temperature handled differently?",
-          a: "Temperature scales don't share a common zero point, so conversions use fixed formulas rather than a simple multiplier.",
+          q: "Is the Unit Converter accurate?",
+          a: "Yes. The converter uses standard conversion formulas to provide accurate results.",
         },
         {
-          q: "Can I add more unit categories?",
-          a: "This tool currently covers the most common everyday conversions — length, weight and temperature.",
+          q: "Is the Unit Converter free to use?",
+          a: "Yes, you can use the Unit Converter online for free without downloading software. But you can sign up to enjoy more advanced features.",
         },
       ]}
     >
