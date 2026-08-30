@@ -2,35 +2,34 @@ import type { Metadata } from "next";
 import ToolShell from "@/components/ToolShell";
 import ColorConverter from "@/components/tools/ColorConverter";
 import { getTool } from "@/lib/tools";
-
 const tool = getTool("color-converter")!;
-
 export const metadata: Metadata = {
   title: tool.name,
   description: tool.shortDesc,
 };
-
 export default function Page() {
   return (
     <ToolShell
       tool={tool}
       howTo={[
-        "Use the color picker or type a HEX code directly.",
-        "The preview swatch updates live as you change the value.",
-        "Copy the HEX, RGB, or HSL value you need with one click.",
+        "Enter a color value in HEX, RGB, or HSL format.",
+        "Select the color format you want to convert from.",
+        "Click Convert to generate the equivalent color values.",
+        "Check the live color preview to see the selected color.",
+        "Copy the converted color code and use it in your design or project.",
       ]}
       faqs={[
         {
-          q: "What's the difference between RGB and HSL?",
-          a: "RGB defines a color by red, green and blue light levels; HSL defines it by hue, saturation and lightness — often easier for adjusting shades.",
+          q: "What color formats can I convert?",
+          a: "You can convert colors between HEX, RGB, and HSL formats.",
         },
         {
-          q: "Can I enter a 3-digit HEX code?",
-          a: "Yes, shorthand codes like #fff are automatically expanded to their full 6-digit equivalent.",
+          q: "Can I preview the converted color?",
+          a: "Yes, the tool provides a live preview so you can see the color as you convert it.",
         },
         {
-          q: "Will this match colors exactly across screens?",
-          a: "Values are calculated precisely, though actual on-screen appearance can vary slightly by monitor calibration.",
+          q: "Is the Color Converter free to use?",
+          a: "Yes, you can convert colors online for free without installing additional software.",
         },
       ]}
     >
