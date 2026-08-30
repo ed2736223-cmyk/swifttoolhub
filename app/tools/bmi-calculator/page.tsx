@@ -2,24 +2,23 @@ import type { Metadata } from "next";
 import ToolShell from "@/components/ToolShell";
 import BmiCalculator from "@/components/tools/BmiCalculator";
 import { getTool } from "@/lib/tools";
-
 const tool = getTool("bmi-calculator")!;
-
 export const metadata: Metadata = { title: tool.name, description: tool.shortDesc };
-
 export default function Page() {
   return (
     <ToolShell
       tool={tool}
       howTo={[
-        "Enter your height in centimeters and weight in kilograms.",
-        "Your BMI and category appear instantly.",
-        "Use it as a general reference, not a medical diagnosis.",
+        "Enter your height in the required unit.",
+        "Enter your weight in the required unit.",
+        "Click Calculate to calculate your BMI.",
+        "Review your BMI result and corresponding category.",
+        "Use the result as a general reference for understanding your BMI.",
       ]}
       faqs={[
-        { q: "What are the standard BMI categories?", a: "Under 18.5 is underweight, 18.5–24.9 is normal, 25–29.9 is overweight, and 30+ is considered obese." },
-        { q: "Is BMI accurate for everyone?", a: "It's a general population screening tool and doesn't account for muscle mass, bone density, age, or sex — athletes in particular can score higher than expected." },
-        { q: "Should I make health decisions based on BMI alone?", a: "No — treat it as a starting reference point and speak with a healthcare professional for a fuller picture." },
+        { q: "What is BMI?", a: "BMI (Body Mass Index) is a calculation based on height and weight that provides a general measure of body size." },
+        { q: "How is BMI calculated?", a: "BMI is calculated using a person's weight and height, with the exact formula depending on the measurement units used." },
+        { q: "Is the BMI Calculator free to use?", a: "Yes, you can calculate your BMI online for free without downloading additional software." },
       ]}
     >
       <BmiCalculator />
