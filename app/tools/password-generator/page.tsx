@@ -2,35 +2,33 @@ import type { Metadata } from "next";
 import ToolShell from "@/components/ToolShell";
 import PasswordGenerator from "@/components/tools/PasswordGenerator";
 import { getTool } from "@/lib/tools";
-
 const tool = getTool("password-generator")!;
-
 export const metadata: Metadata = {
   title: tool.name,
   description: tool.shortDesc,
 };
-
 export default function Page() {
   return (
     <ToolShell
       tool={tool}
       howTo={[
-        "Set your preferred password length using the slider.",
-        "Choose which character types to include — lowercase, uppercase, numbers, symbols.",
-        "Click \"Generate Password\" and copy it with one tap.",
+        "Select how long you want your password to be.",
+        "Choose whether to include uppercase letters, lowercase letters, numbers, and symbols.",
+        "Click Generate Password to create a random password.",
+        "Copy the generated password and use it for your account or application.",
       ]}
       faqs={[
         {
-          q: "Are these passwords random and secure?",
-          a: "Yes — generation uses your browser's cryptographic random number source, not a predictable pattern.",
+          q: "What makes a password strong?",
+          a: "A strong password is long, unique, and uses a mix of uppercase and lowercase letters, numbers, and symbols.",
         },
         {
-          q: "Is my password sent anywhere or logged?",
-          a: "No. Everything happens locally in your browser; nothing is transmitted or stored.",
+          q: "Can I customize the generated password?",
+          a: "Yes, you can choose the password length and the types of characters you want to include.",
         },
         {
-          q: "What length should I use?",
-          a: "16 characters or more with a mix of character types is a solid baseline for most accounts.",
+          q: "Is the Password Generator free to use?",
+          a: "Yes, you can generate strong passwords online for free without downloading additional software.",
         },
       ]}
     >
