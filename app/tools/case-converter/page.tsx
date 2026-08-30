@@ -15,22 +15,25 @@ export default function Page() {
     <ToolShell
       tool={tool}
       howTo={[
-        "Type or paste your text into the box.",
-        "All five case styles update at once below it.",
-        "Copy whichever version you need with its copy button.",
+        
+        "Enter or paste your text into the input box.",
+        "Choose a case option such as UPPERCASE, lowercase, Title Case, or Sentence case.",
+        "Review the converted text instantly in the output box.",
+        "Copy the result and use it wherever you need.",
+
       ]}
       faqs={[
         {
-          q: "What's the difference between Title Case and Sentence case?",
-          a: "Title Case capitalizes the first letter of every word; Sentence case only capitalizes the first letter of each sentence.",
+          q: "What is a Text Case Converter?",
+          a: "A Text Case Converter changes your text into different formats, such as UPPERCASE, lowercase, Title Case, and Sentence case.",
         },
         {
-          q: "Can I use this for code variable names?",
-          a: "This tool is built for regular prose casing — for camelCase or snake_case variable naming you'd want a dedicated code-casing tool.",
+          q: "Can I convert large amounts of text?",
+          a: "Yes, you can paste longer blocks of text and quickly convert them into your preferred case.",
         },
         {
-          q: "Does it work on long paragraphs?",
-          a: "Yes, there's no practical length limit — everything is processed instantly in your browser.",
+          q: " Is the Text Case Converter free to use?",
+          a: "Yes, you can convert text online for free without installing any software. But you can also sign up for a paid account to unlock more features.",
         },
       ]}
     >
