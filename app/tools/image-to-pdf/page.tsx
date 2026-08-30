@@ -24,16 +24,16 @@ export default function Page() {
       ]}
       faqs={[
         {
-          q: "Are my images uploaded to a server?",
-          a: "No. The conversion runs entirely in your browser, so your images never leave your device.",
+          q: " How do I convert an image to PDF?",
+          a: "Upload your JPG or PNG images, arrange them in your preferred order, and click Convert to PDF to create a single PDF.",
         },
         {
-          q: "Is there a limit on how many images I can add?",
-          a: "There's no hard limit, but very large batches will take longer since everything is processed on your device.",
+          q: " Can I convert multiple images into one PDF?",
+          a: "Yes. You can combine multiple JPG or PNG images into a single PDF, with each image appearing as a separate page.",
         },
         {
-          q: "What page size does the PDF use?",
-          a: "Each image is placed on a standard page and scaled to fit while keeping its original proportions.",
+          q: " Is the Image to PDF Converter free?",
+          a: "Yes, you can use the Image to PDF Converter for free without downloading additional software. You can also sign up for a free account to access additional features.",
         },
       ]}
     >
