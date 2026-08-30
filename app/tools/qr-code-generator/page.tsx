@@ -15,22 +15,26 @@ export default function Page() {
     <ToolShell
       tool={tool}
       howTo={[
-        "Type or paste a link, phone number, or any text into the field.",
-        "Click \"Generate\" to create the QR code.",
-        "Download it as a PNG to print or share.",
+      
+        "Paste a URL, text, or other information into the input box.",
+        "Click Generate QR Code to create your code.",
+        "Check that the generated code looks correct.",
+        "Save the QR code to your device and use it wherever needed.",
+
       ]}
       faqs={[
         {
-          q: "Do these QR codes expire?",
-          a: "No. The code is a direct encoding of the text you entered, so it works for as long as that link or content stays valid.",
+          q: "What can I use to create a QR code?",
+          a: "You can create a QR code from a website link, text, or other supported information.",
         },
         {
-          q: "Can I scan it directly from the screen?",
-          a: "Yes, most phone cameras can scan it right off your screen — downloading is only needed if you want to print or share the image.",
+          q: "Can I download the generated QR code?",
+          a: "Yes, you can download your generated QR code and use it for websites, documents, marketing materials, or sharing information.",
         },
         {
-          q: "Is there a size limit for what I can encode?",
-          a: "Very long text will still generate a code, but it becomes denser and can be harder for some scanners to read — shorter links work best.",
+          q: "Is the QR Code Generator free to use?",
+          a: "Yes, you can generate QR codes online for free without installing additional software. To enjoy additional features, upgrade to a Pro account.
+",
         },
       ]}
     >
