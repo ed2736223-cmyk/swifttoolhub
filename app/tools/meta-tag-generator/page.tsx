@@ -2,24 +2,23 @@ import type { Metadata } from "next";
 import ToolShell from "@/components/ToolShell";
 import MetaTagGenerator from "@/components/tools/MetaTagGenerator";
 import { getTool } from "@/lib/tools";
-
 const tool = getTool("meta-tag-generator")!;
-
 export const metadata: Metadata = { title: tool.name, description: tool.shortDesc };
-
 export default function Page() {
   return (
     <ToolShell
       tool={tool}
       howTo={[
-        "Fill in your page title, description, and optional keywords/author.",
-        "Ready-to-paste meta tags are generated automatically.",
-        "Copy them straight into your page's <head> section.",
+        "Add your page title, description, and relevant information.",
+        "Enter relevant keywords if the tool provides a keyword field.",
+        "Click Generate to create your SEO-ready tags.",
+        "Check the generated title, description, and other meta tags.",
+        "Copy the code and add it to your webpage's <head> section.",
       ]}
       faqs={[
-        { q: "How long should a meta description be?", a: "Roughly 150–160 characters is the common guideline so it doesn't get cut off in search results." },
-        { q: "Are keyword meta tags still useful?", a: "Most major search engines no longer use the keywords tag for ranking, but some tools and internal search systems still read it." },
-        { q: "What are the og: tags for?", a: "Open Graph tags control how your page looks when shared on social platforms like Facebook and LinkedIn." },
+        { q: "What are meta tags?", a: "Meta tags provide information about a webpage to search engines and browsers, including its title and description." },
+        { q: "What should I include in a meta description?", a: "A good meta description should clearly summarize the page, naturally include relevant keywords, and encourage users to click." },
+        { q: "Is the Meta Tag Generator free to use?", a: "Yes, you can generate SEO-ready meta tags online for free without installing additional software." },
       ]}
     >
       <MetaTagGenerator />
