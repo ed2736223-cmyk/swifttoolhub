@@ -33,8 +33,7 @@ export default function Page() {
         },
         {
           q: "Is the QR Code Generator free to use?",
-          a: "Yes, you can generate QR codes online for free without installing additional software. To enjoy additional features, upgrade to a Pro account.
-",
+          a: "Yes, you can generate QR codes online for free without installing additional software. To enjoy additional features, upgrade to a Pro account.",
         },
       ]}
     >
