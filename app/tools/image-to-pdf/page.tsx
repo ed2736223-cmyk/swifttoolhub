@@ -15,10 +15,12 @@ export default function Page() {
     <ToolShell
       tool={tool}
       howTo={[
-        "Click the upload area and select one or more JPG or PNG images.",
-        "Reorder is done by upload order — remove any image with the small × button if needed.",
-        "Click \"Convert to PDF\" to build the file in your browser.",
-        "The PDF downloads automatically once it's ready.",
+        "Select the JPG or PNG files you want to convert.",
+        "Reorder them if needed to set the correct page sequence.",
+        "Click Convert to PDF to combine your images.",
+        "Check that all images appear correctly and in the desired order.",
+        "Save the finished PDF to your device.",
+
       ]}
       faqs={[
         {
