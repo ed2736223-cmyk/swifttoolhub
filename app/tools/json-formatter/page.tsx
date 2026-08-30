@@ -2,35 +2,34 @@ import type { Metadata } from "next";
 import ToolShell from "@/components/ToolShell";
 import JsonFormatter from "@/components/tools/JsonFormatter";
 import { getTool } from "@/lib/tools";
-
 const tool = getTool("json-formatter")!;
-
 export const metadata: Metadata = {
   title: tool.name,
   description: tool.shortDesc,
 };
-
 export default function Page() {
   return (
     <ToolShell
       tool={tool}
       howTo={[
-        "Paste your JSON into the input box on the left.",
-        "Click \"Format\" for readable, indented output, or \"Minify\" for a compact single line.",
-        "If the JSON is invalid, the exact parsing error is shown so you can fix it.",
+        "Paste or enter your JSON data into the input box.",
+        "Choose whether you want to format, validate, or minify the JSON.",
+        "Click Format, Validate, or Minify to process your data.",
+        "Review the formatted output or validation results.",
+        "Copy the processed JSON and use it in your project or application.",
       ]}
       faqs={[
         {
-          q: "Does this validate JSON or just format it?",
-          a: "Both — formatting only succeeds on valid JSON, and any syntax error is shown immediately.",
+          q: "What does a JSON Formatter & Validator do?",
+          a: "It formats JSON for better readability, checks for syntax errors, and minifies JSON by removing unnecessary spaces and line breaks.",
         },
         {
-          q: "Is my data sent to a server?",
-          a: "No, parsing and formatting run entirely in your browser using standard JSON methods.",
+          q: "How can I check if my JSON is valid?",
+          a: "Paste your JSON into the tool and select Validate to check whether it follows valid JSON syntax.",
         },
         {
-          q: "What's the difference between Format and Minify?",
-          a: "Format adds line breaks and indentation for readability; Minify strips all unnecessary whitespace to reduce file size.",
+          q: "Is the JSON Formatter & Validator free to use?",
+          a: "Yes, you can format, validate, and minify JSON online for free without installing additional software.",
         },
       ]}
     >
