@@ -2,24 +2,23 @@ import type { Metadata } from "next";
 import ToolShell from "@/components/ToolShell";
 import AgeCalculator from "@/components/tools/AgeCalculator";
 import { getTool } from "@/lib/tools";
-
 const tool = getTool("age-calculator")!;
-
 export const metadata: Metadata = { title: tool.name, description: tool.shortDesc };
-
 export default function Page() {
   return (
     <ToolShell
       tool={tool}
       howTo={[
-        "Select your date of birth.",
-        "Your exact age in years, months and days appears instantly.",
-        "The total number of days lived is shown underneath.",
+        "Enter your date of birth.",
+        "Select the date you want to calculate your age up to.",
+        "Click Calculate to calculate your exact age.",
+        "Review your age in years, months, and days.",
+        "Copy or use the result wherever you need it.",
       ]}
       faqs={[
-        { q: "How is the age calculated?", a: "It compares your birth date to today's date, accounting for varying month lengths so the months and days are exact." },
-        { q: "Does this account for leap years?", a: "Yes, the underlying date calculations handle leap years automatically." },
-        { q: "Is my birth date stored anywhere?", a: "No — the calculation happens entirely in your browser and nothing is sent to a server." },
+        { q: "How does the Age Calculator work?", a: "It calculates the difference between your date of birth and a selected date to determine your exact age." },
+        { q: "Can I calculate my age on a specific date?", a: "Yes, you can enter a specific date to find out exactly how old you will be on that day." },
+        { q: "Is the Age Calculator free to use?", a: "Yes, you can calculate your age online for free without downloading additional software." },
       ]}
     >
       <AgeCalculator />
