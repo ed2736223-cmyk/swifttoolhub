@@ -1,0 +1,158 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id              String           @id @default(cuid())
+  name            String?
+  bio             String? // short optional profile blurb, editable in Account Settings
+  email           String           @unique
+  passwordHash    String
+  plan            String           @default("FREE") // FREE | PRO — the $70 All-Access, unlimited, ad-free plan
+  role            String           @default("USER") // USER | ADMIN
+  createdAt       DateTime         @default(now())
+  usages          ToolUsage[]
+  paymentRequests PaymentRequest[] @relation("SubmittedRequests")
+  reviewedRequests PaymentRequest[] @relation("ReviewedRequests")
+  toolPurchases   ToolPurchase[]
+}
+
+// A single Pro tool a user has individually unlocked (paid that tool's own
+// price, without buying the full Pro bundle). Created only when an admin
+// approves a PaymentRequest of kind "TOOL".
+model ToolPurchase {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  toolSlug  String
+  amount    Float    @default(0) // price paid, in USD, at time of purchase
+  createdAt DateTime @default(now())
+
+  @@unique([userId, toolSlug])
+  @@index([userId])
+}
+
+// A user's claim of having paid, submitted with a screenshot of the payment
+// and reviewed by an admin before access is granted. Nothing here ever
+// grants access automatically — only the admin-approve route does.
+model PaymentRequest {
+  id            String    @id @default(cuid())
+  userId        String
+  user          User      @relation("SubmittedRequests", fields: [userId], references: [id], onDelete: Cascade)
+  // What this payment is for:
+  //   PRO      — $70 All-Access: every tool, unlimited use, no ads anywhere
+  //   BUNDLE10 — $15: any 10 paid tools of the user's choice (toolSlugs)
+  //   TOOL     — single-tool unlock (default $5, see REFERENCE_TOOL_PRICE):
+  //              exactly one slug in toolSlugs
+  kind          String    @default("PRO")
+  toolSlugs     String? // JSON-encoded array of slugs — up to 10 for "BUNDLE10", exactly 1 for "TOOL"
+  amount        Float     @default(70) // price in USD shown to the user for this request
+  screenshot    String // data URL (base64) of the uploaded payment screenshot
+  note          String?
+  status        String    @default("PENDING") // PENDING | APPROVED | REJECTED
+  createdAt     DateTime  @default(now())
+  reviewedAt    DateTime?
+  reviewedById  String?
+  reviewedBy    User?     @relation("ReviewedRequests", fields: [reviewedById], references: [id])
+
+  @@index([status])
+  @@index([userId])
+}
+
+// Tools added from the admin panel, without a hand-built page/component yet.
+// These show up everywhere the built-in tools do (dashboard, /tools listing,
+// sitemap) and get their own /tools/[slug] page rendered from `content`.
+// An admin can add one, edit its details/content any time, or remove it —
+// no code deploy needed. Once a developer builds a real interactive
+// component for it, it can be "promoted" into lib/tools.ts.
+model Tool {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  name      String
+  shortDesc String
+  content   String // long-form description shown on the tool's page
+  howTo     String? // optional steps, one per line
+  category  String   @default("Convert") // Convert | Generate | Check | Develop
+  tier      String   @default("free") // free | pro
+  price     Float    @default(0) // one-time unlock price in USD, only used when tier = "pro"
+  icon      String   @default("Wrench") // lucide-react icon name
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category])
+}
+
+// Tracks how many times a signed-in user has used a given FREE tool, so the
+// free-use limit (see lib/pricing.ts) can be enforced server-side instead of
+// just in the browser. Anonymous visitors are still limited via
+// localStorage (see components/ToolAccessGate.tsx) since there's no user
+// row to attach a count to.
+model ToolUsage {
+  id        String   @id @default(cuid())
+  userId    String
+  toolSlug  String
+  count     Int      @default(0)
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, toolSlug])
+}
+
+// One row per manageable page. Two jobs at once:
+//   1. CMS content — `sections` is a JSON-encoded array of typed content
+//      blocks (see lib/pageSections.ts) that the admin panel edits and the
+//      matching app/<slug>/page.tsx renders — no code deploy to change copy.
+//   2. Indexing control — `status` decides whether the page is safe to show
+//      Google. "DRAFT" (or no row at all, for a page that expects one) means
+//      the page renders a "content coming soon" placeholder AND is excluded
+//      from the sitemap and disallowed in robots.txt, so an unfinished page
+//      never risks an AdSense review. Flip to "READY" once it's actually
+//      written, and it becomes indexable immediately.
+model Page {
+  id              String   @id @default(cuid())
+  slug            String   @unique // "about", "contact", "privacy-policy", "terms-of-service", ...
+  title           String
+  metaDescription String
+  status          String   @default("DRAFT") // DRAFT | READY
+  sections        String   @default("[]") // JSON-encoded Section[] — see lib/pageSections.ts
+  updatedAt       DateTime @updatedAt
+  createdAt       DateTime @default(now())
+}
+
+// Per-tool admin overrides, keyed by slug. Works for BOTH built-in tools
+// (defined in code, lib/tools.ts) and admin-added tools (stored in the Tool
+// model below) — this is the one place that makes every tool's price and
+// usage limit editable from the admin panel without touching code, no
+// matter where the tool itself is defined. A missing row (or a null field
+// on an existing row) just means "use the tool's/site's default".
+model ToolConfig {
+  slug        String   @id
+  tier        String? // overrides the tool's built-in tier: "free" | "pro". Null = use the tool's own default.
+  price       Float? // overrides the tool's built-in price, for Pro tools
+  useLimit    Int? // overrides the site default free-use limit for this tool; -1 = unlimited
+  adsDisabled Boolean  @default(false) // hide ads on this tool regardless of plan
+  updatedAt   DateTime @updatedAt
+}
+
+// Single settings row (there is only ever one) for everything site-wide
+// that used to be hardcoded constants: bundle/all-access prices, the
+// default free-tool use limit, and the Adsterra ad codes. Admin-editable at
+// /admin/settings — see lib/siteSettings.ts for the read/write helpers and
+// the fallback defaults used before this row exists.
+model SiteSettings {
+  id                  String   @id @default("singleton")
+  bundle10Price       Float    @default(15)
+  bundle10Size        Int      @default(10)
+  allAccessPrice      Float    @default(70)
+  defaultFreeUseLimit Int      @default(4)
+  adsEnabled          Boolean  @default(false)
+  adsterraBannerKey   String?
+  adsterraBannerSrc   String?
+  adsterraSitewideSrc String?
+  updatedAt           DateTime @updatedAt
+}

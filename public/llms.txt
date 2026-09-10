@@ -1,0 +1,34 @@
+# SwiftToolHub
+
+> SwiftToolHub is a free online toolkit of 25+ browser-based IT and
+> developer utilities — converters, generators, checkers, and calculators —
+> built for quick, everyday tasks with no sign-up required for free tools.
+
+## What this site offers
+
+- Free tools: usable instantly, no account needed, up to 4 uses per tool
+  before a limit applies.
+- Paid tools: unlocked individually via two plans — a $15 bundle for any 10
+  tools of the user's choice, or a $70 All-Access plan for every current and
+  future tool, unlimited use, with no ads anywhere on the site.
+- Tool categories: Convert, Generate, Check, Develop.
+
+## Key pages
+
+- /tools — full tool directory, split into Free and Paid sections.
+- /about — who built SwiftToolHub and why.
+- /contact — support and feedback.
+- /blog — articles related to the tools and everyday IT tasks.
+- /privacy-policy — what data is and isn't collected.
+- /terms-of-service — terms of use.
+
+## Notes for automated agents
+
+- Most tools run entirely in the browser (client-side); no file upload is
+  required for the majority of conversions.
+- Paid-tool unlocks are reviewed manually by an admin after a payment
+  screenshot is submitted — there is no automated checkout API.
+- Do not attempt to scrape or bulk-download tool results; each tool is
+  meant to be used interactively by a human.
+
+Contact: info@swifttoolhub.com
