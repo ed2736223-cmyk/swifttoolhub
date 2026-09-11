@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSiteSettings } from "@/lib/useSiteSettings";
+import { getStoredConsent, CONSENT_EVENT } from "@/lib/cookieConsent";
 
 /**
  * Adsterra banner ad unit — fully managed from the admin panel
@@ -24,7 +25,20 @@ export default function AdSlot({
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { settings, loading } = useSiteSettings();
-  const active = settings.adsEnabled && settings.adsterraBannerKey && settings.adsterraBannerSrc;
+  const [consent, setConsent] = useState<string | null>(null);
+
+  useEffect(() => {
+    setConsent(getStoredConsent());
+    const handler = (e: Event) => setConsent((e as CustomEvent).detail);
+    window.addEventListener(CONSENT_EVENT, handler);
+    return () => window.removeEventListener(CONSENT_EVENT, handler);
+  }, []);
+
+  const active =
+    settings.adsEnabled &&
+    settings.adsterraBannerKey &&
+    settings.adsterraBannerSrc &&
+    consent === "accepted";
 
   useEffect(() => {
     if (!active || !containerRef.current) return;

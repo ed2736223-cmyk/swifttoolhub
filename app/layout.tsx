@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Sora, Inter } from "next/font/google";
-import Script from "next/script";
 import AuthProvider from "@/components/AuthProvider";
 import JsonLd from "@/components/JsonLd";
+import CookieConsent from "@/components/CookieConsent";
+import AdsGate from "@/components/AdsGate";
 import { SITE_URL } from "@/lib/site";
 import { getSiteSettings } from "@/lib/siteSettings";
 import "./globals.css";
@@ -77,15 +78,11 @@ export default async function RootLayout({
       <head>
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />
-        {sitewideAdSrc && (
-          <Script
-            src={sitewideAdSrc.startsWith("//") ? sitewideAdSrc : `//${sitewideAdSrc}`}
-            strategy="afterInteractive"
-          />
-        )}
       </head>
       <body>
         <AuthProvider>{children}</AuthProvider>
+        <CookieConsent />
+        <AdsGate src={sitewideAdSrc} />
       </body>
     </html>
   );
