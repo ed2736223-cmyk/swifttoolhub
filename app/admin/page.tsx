@@ -3,8 +3,6 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { tools } from "@/lib/tools";
 import {
-
-export const dynamic = "force-dynamic";
   Wrench,
   Users,
   Activity,
@@ -16,6 +14,8 @@ export const dynamic = "force-dynamic";
   AlertTriangle,
   UserPlus,
 } from "lucide-react";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Admin — Overview",
