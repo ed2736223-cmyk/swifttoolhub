@@ -1,0 +1,4 @@
+# Replace pub-0000000000000000 with the publisher id AdSense gives you
+# after you add the site, then re-deploy so this file is live at
+# https://swifttoolhub.com/ads.txt — AdSense checks for it during review.
+google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
