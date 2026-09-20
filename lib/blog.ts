@@ -8,21 +8,7 @@ export type Post = {
 };
 
 export const posts: Post[] = [
-  {
-    slug: "choosing-a-strong-password-in-2026",
-    title: "Choosing A Strong Password In 2026",
-    excerpt: "Length still beats complexity, but a few habits matter more than people think.",
-    date: "2026-06-12",
-    readTime: "4 min read",
-    content: [
-      "Most password advice hasn't changed much in the last decade, but the threats have. Automated cracking tools have gotten faster, and password databases from old breaches keep resurfacing, so a password that felt strong five years ago may not hold up today.",
-      "The single biggest factor in password strength is length, not complexity. A 16-character password made of random words is often harder to crack than an 8-character password stuffed with symbols, and it's far easier to remember. If a site allows passphrases, lean into that.",
-      "Reusing passwords across sites is still the most common mistake. If one service is breached, attackers try that same password everywhere else. A password manager solves this cleanly — it generates and stores a unique password per site so you never have to remember more than one master password.",
-      "Where you can't use a manager, our Password Generator tool creates strong random passwords with adjustable length and character sets directly in your browser, without sending anything to a server.",
-      "Two-factor authentication remains one of the highest-value security habits available. Even a strong password can be phished or leaked; a second factor — an app-based code or a hardware key — stops most account takeovers cold.",
-      "Finally, don't over-rotate. Forcing password changes every 30 days, without a specific reason like a breach, tends to push people toward weaker, more predictable passwords. Pick a strong, unique password per account and change it only when there's a real reason to.",
-    ],
-  },
+ 
   {
     slug: "json-101-a-quick-guide",
     title: "JSON 101: A Quick Guide For Beginners",
