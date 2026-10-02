@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Sora, Inter } from "next/font/google";
+import Script from "next/script";
 import AuthProvider from "@/components/AuthProvider";
 import JsonLd from "@/components/JsonLd";
 import CookieConsent from "@/components/CookieConsent";
@@ -78,6 +79,11 @@ export default async function RootLayout({
       <head>
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />
+        <script
+  async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1835456717804594"
+  crossOrigin="anonymous"
+/>
       </head>
       <body>
         <AuthProvider>{children}</AuthProvider>
@@ -87,5 +93,3 @@ export default async function RootLayout({
     </html>
   );
 }
-
-updated code do
