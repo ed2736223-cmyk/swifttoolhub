@@ -2,9 +2,13 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Problems from "@/components/Problems";
 import Solutions from "@/components/Solutions";
+import AboutIntro from "@/components/AboutIntro";
+import ToolCategories from "@/components/ToolCategories";
+import SignupGuide from "@/components/SignupGuide";
 import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
 import Integrations from "@/components/Integrations";
+import Principles from "@/components/Principles";
 import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import Security from "@/components/Security";
@@ -17,8 +21,9 @@ import ScrollProgress from "@/components/ScrollProgress";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Swift Tool Hub - Online Developer & Utility Tools",
-  description: "Free online developer tools, converters, and utilities.",
+  title: { absolute: "SwiftToolHub — Free Online Tools to Get Everything Done" },
+  description:
+    "SwiftToolHub is a free online toolkit of converters, generators, checkers and calculators. No sign-up for core tools, and most processing happens right in your browser.",
   alternates: {
     canonical: "https://swifttoolhub.com",
   },
@@ -33,25 +38,29 @@ export default function Home() {
 
       <Problems />
       <Solutions />
+      <AboutIntro />
+      <ToolCategories />
 
-      {/* Ad slot — after Solutions, high-visibility, non-intrusive */}
-      <div className="bg-white px-4 pb-4">
+      {/* Ad slot — natural break after the category overview */}
+      <div className="bg-white px-4 py-4">
         <div className="mx-auto max-w-5xl">
           <AdSlot label="In-feed ad" />
         </div>
       </div>
 
+      <SignupGuide />
       <Features />
       <HowItWorks />
       <Integrations />
 
-      {/* Ad slot — after tools grid, natural break before pricing */}
-      <div className="bg-white px-4 pb-4">
+      {/* Ad slot — after tools grid, natural break before the principles + pricing */}
+      <div className="bg-white px-4 py-4">
         <div className="mx-auto max-w-5xl">
           <AdSlot label="In-feed ad" />
         </div>
       </div>
 
+      <Principles />
       <Pricing />
       <Testimonials />
       <Security />
