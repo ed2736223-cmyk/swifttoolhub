@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, Phone, Mail } from "lucide-react";
+import Link from "next/link";
+import { ChevronDown, MessageSquare, Mail } from "lucide-react";
 import Reveal from "./Reveal";
 import JsonLd from "./JsonLd";
 
@@ -16,13 +17,12 @@ const faqs = [
   },
   {
     q: "Can I use these tools for commercial or client work?",
-    a: "Yes. There are no restrictions on using results such as converted files, generated passwords, formatted code, and so on for personal, freelance, or business projects",
+    a: "Yes. There are no restrictions on using results such as converted files, generated passwords, formatted code, and so on for personal, freelance, or business projects.",
   },
   {
     q: "How often are new tools added?",
     a: "New tools are released regularly, usually based on what people request. If there's a converter, checker, or generator you wish existed here, you can suggest it directly from the contact page.",
   },
-  
 ];
 
 export default function FAQ() {
@@ -43,8 +43,7 @@ export default function FAQ() {
       <JsonLd data={faqSchema} />
       <div className="mx-auto max-w-4xl">
         <Reveal className="text-center">
-          <h2 className="text-3xl font-bold sm:text-4xl">Got Questions? We’ve Got Answers</h2>
-          
+          <h2 className="text-3xl font-bold sm:text-4xl">Got Questions? We’ve Got Answers.</h2>
         </Reveal>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-[1.4fr,1fr]">
@@ -83,12 +82,12 @@ export default function FAQ() {
               <p className="text-sm font-semibold text-heading">
                 Have more questions? <br /> Reach out any time
               </p>
-              <a
-                href="tel:+10000000000"
+              <Link
+                href="/contact"
                 className="btn-glow flex items-center gap-2 rounded-full bg-brand-gradient px-5 py-2.5 text-sm font-semibold text-white"
               >
-                <Phone size={14} /> Contact Support
-              </a>
+                <MessageSquare size={14} /> Contact Support
+              </Link>
               <p className="text-xs text-heading/40">or email support@swifttoolhub.com</p>
             </div>
           </Reveal>
