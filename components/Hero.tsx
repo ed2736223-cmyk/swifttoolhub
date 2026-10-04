@@ -50,9 +50,8 @@ export default function Hero() {
         </div>
 
         <h1 className="animate-fade-up text-[2.6rem] font-bold leading-[1.08] text-white sm:text-6xl">
-          Free Online{" "}
           <span className="bg-gradient-to-r from-brand-light via-fuchsia-300 to-brand-light bg-clip-text text-transparent">
-            IT Tools 
+            Free Online Tools
           </span>{" "}
           to Get Everything Done
         </h1>
@@ -61,8 +60,8 @@ export default function Hero() {
           className="mx-auto mt-5 max-w-xl animate-fade-up text-[15px] text-white/60 sm:text-base"
           style={{ animationDelay: "0.15s" }}
         >
-          SwiftToolHub is a complete online toolkit for quick answers, with no downloads, 
-          buffering, sign-ups, or unnecessary waiting. 
+          SwiftToolHub is a complete online toolkit for quick answers, with no downloads,
+          buffering, sign-ups, or unnecessary waiting.
         </p>
 
         <div
