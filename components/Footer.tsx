@@ -51,8 +51,7 @@ export default function Footer() {
             <div className="mt-5">
               <p className="text-xs font-medium text-white/70">Join our newsletter</p>
               <p className="mt-1 max-w-xs text-[11.5px] text-white/40">
-                Get useful tool updates, new features, and productivity tips delivered straight to your
-                inbox.
+               
               </p>
               <form className="mt-2 flex max-w-xs overflow-hidden rounded-full border border-white/10 bg-white/5">
                 <input
