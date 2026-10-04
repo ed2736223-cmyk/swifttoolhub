@@ -2,10 +2,10 @@ import { Gauge, Zap, ShieldCheck, Layers, ArrowUpRight } from "lucide-react";
 import Reveal from "./Reveal";
 
 const items = [
-  { icon: Gauge, title: "Instant Results", desc: "Every tool runs in the browser — no waiting, no queue." },
-  { icon: Zap, title: "Zero Setup", desc: "No sign-up or install. Open a tool and start working." },
-  { icon: Layers, title: "One Workspace", desc: "Converters, checkers and generators, organized in one place." },
-  { icon: ShieldCheck, title: "Privacy First", desc: "Files process locally where possible — nothing kept longer than needed." },
+  { icon: Gauge, title: "Instant Results", desc: "Every tool runs in the browser with no waiting and no queue." },
+  { icon: Zap, title: "Zero Setup", desc: "No sign-up or install is required. Open a tool and start working." },
+  { icon: Layers, title: "One Workspace", desc: "Converters, checkers and generators are all organised in one place for help." },
+  { icon: ShieldCheck, title: "Privacy First", desc: "Files are processed locally where possible and nothing kept longer than needed." },
 ];
 
 export default function Solutions() {
@@ -21,7 +21,7 @@ export default function Solutions() {
           <h2 className="mt-5 text-3xl font-bold sm:text-4xl">
             How Does SwiftToolHub Improve Your Workflow?
           </h2>
-          <p className="mx-auto mt-3 max-w-md text-sm text-heading/60">
+          <p className="mx-auto mt-3 max-w-lg text-sm text-heading/60">
             SwiftToolHub gets you quick answers without accounts, ads, data concerns, or unnecessary
             steps. You can enjoy:
           </p>
@@ -36,9 +36,6 @@ export default function Solutions() {
                 </span>
                 <h3 className="mt-4 font-semibold text-heading">{it.title}</h3>
                 <p className="mt-1.5 text-[13px] leading-relaxed text-heading/60">{it.desc}</p>
-                <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-brand opacity-0 transition-opacity group-hover:opacity-100">
-                  Learn more <ArrowUpRight size={12} />
-                </span>
               </div>
             </Reveal>
           ))}
