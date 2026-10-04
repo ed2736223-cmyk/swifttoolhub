@@ -1,4 +1,4 @@
-import { Search, Bookmark, Command } from "lucide-react";
+import { Search, Bookmark } from "lucide-react";
 import Reveal from "./Reveal";
 
 export default function Features() {
@@ -61,29 +61,6 @@ export default function Features() {
             </p>
           </Reveal>
 
-          <Reveal className="sm:col-span-2 rounded-3xl bg-ink-950 p-6 sm:p-8" delay={3}>
-            <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
-              <div>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white">
-                  <Command size={12} /> Keyboard-first
-                </span>
-                <h3 className="mt-4 font-semibold text-white">Built For Speed</h3>
-                <p className="mt-1 max-w-sm text-[13px] text-white/50">
-                  Shortcuts, instant previews and no page reloads between tools.
-                </p>
-              </div>
-              <div className="flex gap-2">
-                {["⌘", "K"].map((k) => (
-                  <span
-                    key={k}
-                    className="grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/5 font-mono text-sm text-white"
-                  >
-                    {k}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </Reveal>
         </div>
       </div>
     </section>
