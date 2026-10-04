@@ -46,7 +46,7 @@ export default function Footer() {
               <span className="font-display text-lg font-bold text-white">SwiftToolHub</span>
             </Link>
             <p className="mt-3 max-w-xs text-[13px] text-white/40">
-              Get useful tool updates, new features, and productivity tips delivered straight to your inbox. 
+              Free, fast IT tools for daily work — no sign-up required.
             </p>
             <div className="mt-5">
               <p className="text-xs font-medium text-white/70">Join our newsletter</p>
