@@ -7,7 +7,6 @@ import ToolCategories from "@/components/ToolCategories";
 import SignupGuide from "@/components/SignupGuide";
 import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
-import Integrations from "@/components/Integrations";
 import Principles from "@/components/Principles";
 import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
@@ -51,9 +50,8 @@ export default function Home() {
       <SignupGuide />
       <Features />
       <HowItWorks />
-      <Integrations />
 
-      {/* Ad slot — after tools grid, natural break before the principles + pricing */}
+      {/* Ad slot — natural break before the principles + pricing */}
       <div className="bg-white px-4 py-4">
         <div className="mx-auto max-w-5xl">
           <AdSlot label="In-feed ad" />
