@@ -9,7 +9,6 @@ import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
 import Principles from "@/components/Principles";
 import Pricing from "@/components/Pricing";
-import Testimonials from "@/components/Testimonials";
 import Security from "@/components/Security";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
@@ -60,7 +59,7 @@ export default function Home() {
 
       <Principles />
       <Pricing />
-      <Testimonials />
+     
       <Security />
       <FAQ />
       <CTA />
