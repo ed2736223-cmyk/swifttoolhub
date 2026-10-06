@@ -33,10 +33,10 @@ export default function Home() {
       <ScrollProgress />
       <Navbar />
       <Hero />
-
+<AboutIntro />
       <Problems />
       <Solutions />
-      <AboutIntro />
+      
       <ToolCategories />
 
       {/* Ad slot — natural break after the category overview */}
